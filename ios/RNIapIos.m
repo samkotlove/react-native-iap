@@ -511,6 +511,7 @@ RCT_EXPORT_METHOD(getPendingTransactions:(RCTPromiseResolveBlock)resolve
     NSString* introductoryPriceSubscriptionPeriod = @"";
 
     NSString* currencyCode = @"";
+    NSString* countryCode = @"";
     NSString* periodNumberIOS = @"0";
     NSString* periodUnitIOS = @"";
 
@@ -582,6 +583,7 @@ RCT_EXPORT_METHOD(getPendingTransactions:(RCTPromiseResolveBlock)resolve
 
     if (@available(iOS 10.0, *)) {
         currencyCode = product.priceLocale.currencyCode;
+        countryCode = product.priceLocale.countryCode;
     }
 
     NSArray *discounts;
@@ -595,6 +597,7 @@ RCT_EXPORT_METHOD(getPendingTransactions:(RCTPromiseResolveBlock)resolve
                          product.productIdentifier, @"productId",
                          [product.price stringValue], @"price",
                          currencyCode, @"currency",
+                         countryCode, @"country",
                          itemType, @"type",
                          product.localizedTitle ? product.localizedTitle : @"", @"title",
                          product.localizedDescription ? product.localizedDescription : @"", @"description",
